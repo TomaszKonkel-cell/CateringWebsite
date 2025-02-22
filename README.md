@@ -58,3 +58,29 @@ Klient ma możliwość zmiany swoich danych oraz hasła w panelu klienta
 
 ### `Książka adresowa`
 
+W panelu klienta możliwe jest zarządzanie adresami dostaw 
+
+- Adres można dodać podając jego informacje (miasto, ulica, kod pocztowy itp. )
+- Wszystkie dane są wymagane, w innym przypadku zwracany jest błąd
+- Wszystkie adresy przypisane do klienta wyświetlają się w zakładce "Książka adresowa"
+- Istniejący adres można edytować poprzez formularz wprowadzając nowe dane
+- Możliwe jest również usunięcie adresu
+
+Aktualizowanie adresu, który jest przypisany do jakiegoś zamówienia powoduje stworzenie nowego adresu w książce adresowej, a adres zamówienia zostaje nie zmieniony
+
+- Kontroler od aktualizacji sprawdza czy adres należy do jakiś zamówień
+- Jeżeli tak to tworzony jest nowy adres, który zostaje przypisany do klienta, a połączenie ze starym adresem jest usuwane
+- Jeżeli nie to dane zostają zmienione bez tworzenia nowego
+
+Takie działanie powoduje to, że zmieniając adres w książce adresowej nie zmieniamy adresu zamówienia
+
+Adres zamówienia można zmienić wykorzystując formularz w szczegółach zamówienia
+
+- Jeżeli adres zamówienia jest taki sam jak ten z ksiązki adresowej, to obydwa ulegną zmianie
+- Jeżeli zamówienie jest na adres nie przypisany do książki adresowej (przypadek kiedy klient zmienił wcześniejszy adres w książce adresowej, który należał do zamówienia) to zmienia się tylko adres zamówienia
+- Zmiana adresu zakończonego zamówienia zwraca błąd
+
+Jeżeli na adres jest już jakieś zamówienie to nie można go usunąć
+
+### `Diety`
+
